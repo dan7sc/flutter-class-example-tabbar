@@ -30,8 +30,29 @@ class _MyHomePageState extends State<MyHomePage> {
         controller: _pageController,
         children: [
           CounterPage(counter: _counter),
-          Expanded(child: Container(color: Colors.red)),
-          Expanded(child: Container(color: Colors.green)),
+          Flex(
+            direction: Axis.vertical,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(color: Colors.red)),
+              Expanded(
+                flex: 2,
+                child: Container(color: Colors.green)),
+            ],
+          ),
+          Flex(
+            direction: Axis.vertical,
+            children: [
+              Expanded(flex: 1, child: Container(color: Colors.green)),
+            ],
+          ),
+          Flex(
+            direction: Axis.vertical,
+            children: [
+              Expanded(flex: 1, child: Container(color: Colors.red)),
+            ],
+          ),
           CounterPage(counter: _counter),
         ],
       ),
