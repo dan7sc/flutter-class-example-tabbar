@@ -28,6 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: PageView(
         controller: _pageController,
+        pageSnapping: false,
         children: [
           CounterPage(counter: _counter),
           Flex(
