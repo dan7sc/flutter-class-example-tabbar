@@ -33,12 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
           Flex(
             direction: Axis.vertical,
             children: [
-              Expanded(
-                flex: 1,
-                child: Container(color: Colors.red)),
-              Expanded(
-                flex: 2,
-                child: Container(color: Colors.green)),
+              Expanded(flex: 1, child: Container(color: Colors.red)),
+              Expanded(flex: 2, child: Container(color: Colors.green)),
             ],
           ),
           Flex(
@@ -83,7 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
             child: IconButton(
               icon: Icon(Icons.arrow_forward_ios),
               onPressed: () {
-                _pageController.nextPage(
+                _pageController.animateTo(
+                  _pageController.position.minScrollExtent + 100,
                   duration: Duration(milliseconds: 400),
                   curve: Curves.easeIn,
                 );
