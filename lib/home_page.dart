@@ -64,7 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
             child: IconButton(
               icon: Icon(Icons.arrow_back_ios),
               onPressed: () {
-                _pageController.previousPage(
+                _pageController.animateTo(
+                  _pageController.position.pixels -
+                    MediaQuery.of(context).size.width,
                   duration: Duration(milliseconds: 400),
                   curve: Curves.easeIn,
                 );
@@ -80,7 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.arrow_forward_ios),
               onPressed: () {
                 _pageController.animateTo(
-                  _pageController.position.minScrollExtent + 100,
+                  _pageController.position.pixels +
+                    MediaQuery.of(context).size.width,
                   duration: Duration(milliseconds: 400),
                   curve: Curves.easeIn,
                 );
