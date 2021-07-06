@@ -40,15 +40,19 @@ class _MyHomePageState extends State<MyHomePage> {
           Flex(
             direction: Axis.horizontal,
             children: [
+              Expanded(flex: 1, child: Container(color: Colors.yellow)),
+              Expanded(flex: 1, child: Container(color: Colors.pink)),
               Expanded(flex: 1, child: Container(color: Colors.green)),
               Expanded(flex: 1, child: Container(color: Colors.red)),
             ],
           ),
           Flex(
-            direction: Axis.vertical,
+            direction: Axis.horizontal,
             children: [
-              Expanded(flex: 1, child: Container(color: Colors.pink)),
+              Expanded(flex: 1, child: Container(color: Colors.blue)),
               Expanded(flex: 1, child: Container(color: Colors.yellow)),
+              Expanded(flex: 1, child: Container(color: Colors.pink)),
+              Expanded(flex: 1, child: Container(color: Colors.white)),
             ],
           ),
           CounterPage(counter: _counter),
@@ -68,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 _pageController.animateTo(
                   _pageController.position.pixels -
-                    MediaQuery.of(context).size.width / 2,
+                    MediaQuery.of(context).size.width / 4,
                   duration: Duration(milliseconds: 400),
                   curve: Curves.easeIn,
                 );
@@ -85,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 _pageController.animateTo(
                   _pageController.position.pixels +
-                    MediaQuery.of(context).size.width / 2,
+                    MediaQuery.of(context).size.width / 4,
                   duration: Duration(milliseconds: 400),
                   curve: Curves.easeIn,
                 );
