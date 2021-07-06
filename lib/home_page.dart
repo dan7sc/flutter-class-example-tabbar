@@ -28,6 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: PageView(
         controller: _pageController,
+        physics: NeverScrollableScrollPhysics(),
         pageSnapping: false,
         children: [
           CounterPage(counter: _counter),
@@ -72,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 _pageController.animateTo(
                   _pageController.position.pixels -
-                    MediaQuery.of(context).size.width / 4,
+                      MediaQuery.of(context).size.width / 4,
                   duration: Duration(milliseconds: 400),
                   curve: Curves.easeIn,
                 );
@@ -87,12 +88,43 @@ class _MyHomePageState extends State<MyHomePage> {
             child: IconButton(
               icon: Icon(Icons.arrow_forward_ios),
               onPressed: () {
-                _pageController.animateTo(
-                  _pageController.position.pixels +
-                    MediaQuery.of(context).size.width / 4,
-                  duration: Duration(milliseconds: 400),
-                  curve: Curves.easeIn,
-                );
+                if (true) {
+                  showDialog(
+                    context: context,
+                    builder: (_) => Center(
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              8.0,
+                            ),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Container(
+                            child: Material(
+                              child: Text(
+                                "Existem campos inválidos",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                } else {
+                  _pageController.animateTo(
+                    _pageController.position.pixels +
+                      MediaQuery.of(context).size.width / 4,
+                    duration: Duration(milliseconds: 400),
+                    curve: Curves.easeIn,
+                  );
+                }
               },
             ),
           ),
