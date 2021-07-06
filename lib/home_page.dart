@@ -87,9 +87,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             child: IconButton(
               icon: Icon(Icons.arrow_forward_ios),
-              onPressed: () {
+              onPressed: () async {
                 if (true) {
-                  showDialog(
+                  bool value = await showDialog(
                     context: context,
                     builder: (_) => Center(
                       child: Card(
@@ -104,12 +104,27 @@ class _MyHomePageState extends State<MyHomePage> {
                           padding: const EdgeInsets.all(16.0),
                           child: Container(
                             child: Material(
-                              child: Text(
-                                "Existem campos inválidos",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18.0,
-                                ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    "Existem campos inválidos",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 18.0,
+                                    ),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () =>
+                                        Navigator.pop(context, false),
+                                    child: Text("Cancelar"),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () =>
+                                        Navigator.pop(context, true),
+                                    child: Text("Confirmar"),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -117,10 +132,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   );
+                  print(value);
                 } else {
                   _pageController.animateTo(
                     _pageController.position.pixels +
-                      MediaQuery.of(context).size.width / 4,
+                        MediaQuery.of(context).size.width / 4,
                     duration: Duration(milliseconds: 400),
                     curve: Curves.easeIn,
                   );
