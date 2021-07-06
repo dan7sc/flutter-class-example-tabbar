@@ -12,6 +12,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  final _pageController = PageController();
+
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -25,6 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("PageView"),
       ),
       body: PageView(
+        controller: _pageController,
         children: [
           CounterPage(counter: _counter),
           Expanded(child: Container(color: Colors.red)),
@@ -32,10 +35,41 @@ class _MyHomePageState extends State<MyHomePage> {
           CounterPage(counter: _counter),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              shape: BoxShape.circle,
+            ),
+            child: IconButton(
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                _pageController.previousPage(
+                  duration: Duration(milliseconds: 400),
+                  curve: Curves.easeIn,
+                );
+              },
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              shape: BoxShape.circle,
+            ),
+            child: IconButton(
+              icon: Icon(Icons.arrow_forward_ios),
+              onPressed: () {
+                _pageController.nextPage(
+                  duration: Duration(milliseconds: 400),
+                  curve: Curves.easeIn,
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
