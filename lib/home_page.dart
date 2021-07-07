@@ -64,33 +64,70 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
+            height: 30.0,
+            width: 30.0,
             decoration: BoxDecoration(
               color: Colors.blue,
               shape: BoxShape.circle,
             ),
-            child: IconButton(
-              icon: Icon(Icons.arrow_back_ios),
-              onPressed: () {
-                _pageController.animateTo(
-                  _pageController.position.pixels -
-                      (MediaQuery.of(context).size.width / 4),
-                  duration: Duration(milliseconds: 400),
-                  curve: Curves.easeIn,
-                );
-              },
-            ),
+            child: InkWell(
+                child: Center(child: Text("1")),
+                onTap: () {
+                  _pageController.animateTo(
+                    _pageController.position.minScrollExtent,
+                    duration: Duration(milliseconds: 400),
+                    curve: Curves.easeIn,
+                  );
+                }),
           ),
           Container(
+            height: 30.0,
+            width: 30.0,
             decoration: BoxDecoration(
               color: Colors.blue,
               shape: BoxShape.circle,
             ),
-            child: IconButton(
-              icon: Icon(Icons.arrow_forward_ios),
-              onPressed: () async {
+            child: InkWell(
+                child: Center(child: Text("2")),
+                onTap: () {
+                  _pageController.animateTo(
+                    _pageController.position.minScrollExtent +
+                        (MediaQuery.of(context).size.width),
+                    duration: Duration(milliseconds: 400),
+                    curve: Curves.easeIn,
+                  );
+                }),
+          ),
+          Container(
+            height: 30.0,
+            width: 30.0,
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              shape: BoxShape.circle,
+            ),
+            child: InkWell(
+                child: Center(child: Text("3")),
+                onTap: () {
+                  _pageController.animateTo(
+                    _pageController.position.minScrollExtent +
+                        (MediaQuery.of(context).size.width * 2),
+                    duration: Duration(milliseconds: 400),
+                    curve: Curves.easeIn,
+                  );
+                }),
+          ),
+          Container(
+            height: 30.0,
+            width: 30.0,
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              shape: BoxShape.circle,
+            ),
+            child: InkWell(
+              child: Center(child: Text("4")),
+              onTap: () {
                 _pageController.animateTo(
-                  _pageController.position.pixels +
-                    (MediaQuery.of(context).size.width / 4),
+                  _pageController.position.maxScrollExtent,
                   duration: Duration(milliseconds: 400),
                   curve: Curves.easeIn,
                 );
