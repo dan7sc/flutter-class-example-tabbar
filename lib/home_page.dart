@@ -89,13 +89,56 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.arrow_forward_ios),
               onPressed: () async {
                 if (true) {
-                  bool value = await showDialog(
+                  bool? value = false;
+                  value = await showDialog(
+                    barrierDismissible: false,
                     context: context,
                     builder: (_) => Center(
-                      child: CircularProgressIndicator(),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              8.0,
+                            ),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Container(
+                            child: Material(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    "Existem campos inválidos",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 22.0,
+                                    ),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () =>
+                                    Navigator.pop(context, false),
+                                    child: Text("Cancelar"),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () =>
+                                    Navigator.pop(context, false),
+                                    child: Text("Confirmar"),
+                                  ),
+                                ]
+                              ),
+                            ),
+                          ),
+                        )
+                      ),
                     ),
                   );
-                  print(value);
+
+                  Future.delayed(Duration(seconds: 5))
+                    .then((value) => Navigator.pop(context));
+
+                  print(value ?? false);
                 } else {
                   _pageController.animateTo(
                     _pageController.position.pixels +
