@@ -14,12 +14,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final _pageController = PageController();
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
