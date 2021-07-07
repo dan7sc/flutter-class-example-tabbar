@@ -22,22 +22,6 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text("TabBarExample"),
           centerTitle: true,
-          bottom: TabBar(
-            tabs: [
-              Tab(
-                child: Text("Counter"),
-              ),
-              Tab(
-                child: Text("Blue"),
-              ),
-              Tab(
-                child: Text("Colors 1"),
-              ),
-              Tab(
-                child: Text("Colors 2"),
-              ),
-            ],
-          ),
         ),
         body: TabBarView(
           children: [
@@ -46,6 +30,29 @@ class _MyHomePageState extends State<MyHomePage> {
             Page3(),
             Page4(),
           ],
+        ),
+        bottomNavigationBar: SafeArea(
+          bottom: true,
+          child: Container(
+            color: Colors.blue,
+            child: TabBar(
+              indicatorColor: Colors.white,
+              tabs: [
+                Tab(
+                  child: Text("Counter"),
+                ),
+                Tab(
+                  child: Text("Blue"),
+                ),
+                Tab(
+                  child: Text("Colors 1"),
+                ),
+                Tab(
+                  child: Text("Colors 2"),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
