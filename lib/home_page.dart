@@ -32,31 +32,9 @@ class _MyHomePageState extends State<MyHomePage> {
         pageSnapping: false,
         children: [
           CounterPage(counter: _counter),
-          Flex(
-            direction: Axis.vertical,
-            children: [
-              Expanded(flex: 1, child: Container(color: Colors.blue)),
-            ],
-          ),
-          Flex(
-            direction: Axis.horizontal,
-            children: [
-              Expanded(flex: 1, child: Container(color: Colors.yellow)),
-              Expanded(flex: 1, child: Container(color: Colors.pink)),
-              Expanded(flex: 1, child: Container(color: Colors.green)),
-              Expanded(flex: 1, child: Container(color: Colors.red)),
-            ],
-          ),
-          Flex(
-            direction: Axis.horizontal,
-            children: [
-              Expanded(flex: 1, child: Container(color: Colors.blue)),
-              Expanded(flex: 1, child: Container(color: Colors.yellow)),
-              Expanded(flex: 1, child: Container(color: Colors.pink)),
-              Expanded(flex: 1, child: Container(color: Colors.white)),
-            ],
-          ),
-          CounterPage(counter: _counter),
+          Page2(),
+          Page3(),
+          Page4(),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -78,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               _pageController.animateTo(
                 _pageController.position.minScrollExtent +
-                  (MediaQuery.of(context).size.width),
+                    (MediaQuery.of(context).size.width),
                 duration: Duration(milliseconds: 400),
                 curve: Curves.easeIn,
               );
@@ -133,6 +111,59 @@ class NavigatorButton extends StatelessWidget {
         child: Center(child: Text(text)),
         onTap: onPressed,
       ),
+    );
+  }
+}
+
+class Page4 extends StatelessWidget {
+  const Page4({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Flex(
+      direction: Axis.horizontal,
+      children: [
+        Expanded(flex: 1, child: Container(color: Colors.blue)),
+        Expanded(flex: 1, child: Container(color: Colors.yellow)),
+        Expanded(flex: 1, child: Container(color: Colors.pink)),
+        Expanded(flex: 1, child: Container(color: Colors.white)),
+      ],
+    );
+  }
+}
+
+class Page3 extends StatelessWidget {
+  const Page3({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Flex(
+      direction: Axis.horizontal,
+      children: [
+        Expanded(flex: 1, child: Container(color: Colors.yellow)),
+        Expanded(flex: 1, child: Container(color: Colors.pink)),
+        Expanded(flex: 1, child: Container(color: Colors.green)),
+        Expanded(flex: 1, child: Container(color: Colors.red)),
+      ],
+    );
+  }
+}
+class Page2 extends StatelessWidget {
+  const Page2({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Flex(
+      direction: Axis.vertical,
+      children: [
+        Expanded(flex: 1, child: Container(color: Colors.blue)),
+      ],
     );
   }
 }
