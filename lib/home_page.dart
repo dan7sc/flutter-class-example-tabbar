@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'counter_page.dart';
@@ -90,52 +91,21 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () async {
                 if (true) {
                   bool? value = false;
-                  value = await showDialog(
+                  showDialog(
                     barrierDismissible: false,
                     context: context,
                     builder: (_) => Center(
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              8.0,
-                            ),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Container(
-                            child: Material(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    "Existem campos inválidos",
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 22.0,
-                                    ),
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () =>
-                                    Navigator.pop(context, false),
-                                    child: Text("Cancelar"),
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () =>
-                                    Navigator.pop(context, false),
-                                    child: Text("Confirmar"),
-                                  ),
-                                ]
-                              ),
-                            ),
-                          ),
+                      child: Container(
+                        child: CupertinoActivityIndicator(),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
                         )
                       ),
                     ),
                   );
 
-                  Future.delayed(Duration(seconds: 5))
+                  Future.delayed(Duration(seconds: 3))
                     .then((value) => Navigator.pop(context));
 
                   print(value ?? false);
