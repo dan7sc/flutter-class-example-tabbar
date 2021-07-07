@@ -16,63 +16,38 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("PageView"),
-      ),
-      body: PageView(
-        controller: _pageController,
-        pageSnapping: false,
-        children: [
-          CounterPage(counter: _counter),
-          Page2(),
-          Page3(),
-          Page4(),
-        ],
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          NavigatorButton(
-            text: "1",
-            onPressed: () {
-              _pageController.animateTo(
-                _pageController.position.minScrollExtent,
-                duration: Duration(milliseconds: 400),
-                curve: Curves.easeIn,
-              );
-            },
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("TabBarExample"),
+          centerTitle: true,
+          bottom: TabBar(
+            tabs: [
+              Tab(
+                child: Text("Counter"),
+              ),
+              Tab(
+                child: Text("Blue"),
+              ),
+              Tab(
+                child: Text("Colors 1"),
+              ),
+              Tab(
+                child: Text("Colors 2"),
+              ),
+            ],
           ),
-          NavigatorButton(
-            text: "2",
-            onPressed: () {
-              _pageController.animateTo(
-                _pageController.position.minScrollExtent +
-                    (MediaQuery.of(context).size.width),
-                duration: Duration(milliseconds: 400),
-                curve: Curves.easeIn,
-              );
-            },
-          ),
-          NavigatorButton(
-            text: "3",
-            onPressed: () {
-              _pageController.animateTo(
-                _pageController.position.minScrollExtent +
-                    (MediaQuery.of(context).size.width * 2),
-                duration: Duration(milliseconds: 400),
-                curve: Curves.easeIn,
-              );
-            },
-          ),
-          NavigatorButton(
-            text: "4",
-            onPressed: () {
-              _pageController.jumpToPage(4);
-            },
-          ),
-        ],
+        ),
+        body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            CounterPage(counter: _counter),
+            Page2(),
+            Page3(),
+            Page4(),
+          ],
+        ),
       ),
     );
   }
