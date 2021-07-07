@@ -37,6 +37,9 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.blue,
             child: TabBar(
               indicatorColor: Colors.white,
+              indicator: UnderlineTabIndicator(
+                insets: EdgeInsets.fromLTRB(50.0, 0.0, 50.0, 40.0),
+              ),
               tabs: [
                 Tab(
                   child: Text("Counter"),
