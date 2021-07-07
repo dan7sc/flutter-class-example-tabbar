@@ -9,22 +9,34 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   int _counter = 0;
 
-  final _pageController = PageController();
+  TabController? _tabController;
+
+  @override
+  void initState() {
+    _tabController = TabController(vsync: this, length: 8);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 8,
       child: Scaffold(
         appBar: AppBar(
           title: Text("TabBarExample"),
           centerTitle: true,
         ),
         body: TabBarView(
+          controller: _tabController,
           children: [
+            CounterPage(counter: _counter),
+            Page2(),
+            Page3(),
+            Page4(),
             CounterPage(counter: _counter),
             Page2(),
             Page3(),
@@ -35,24 +47,51 @@ class _MyHomePageState extends State<MyHomePage> {
           bottom: true,
           child: Container(
             color: Colors.blue,
-            child: TabBar(
-              indicatorColor: Colors.white,
-              indicator: UnderlineTabIndicator(
-                insets: EdgeInsets.fromLTRB(50.0, 0.0, 50.0, 40.0),
-              ),
-              tabs: [
-                Tab(
-                  child: Text("Counter"),
+            child: Flex(
+              direction: Axis.horizontal,
+              children: [
+                Expanded(
+                  flex: 8,
+                  child: TabBar(
+                    isScrollable: true,
+                    physics: BouncingScrollPhysics(),
+                    indicatorColor: Colors.white,
+                    indicator: UnderlineTabIndicator(
+                      insets: EdgeInsets.fromLTRB(50.0, 0.0, 50.0, 40.0),
+                    ),
+                    controller: _tabController,
+                    onTap: (index) {
+                      setState(() {});
+                    },
+                    tabs: [
+                      Tab(
+                        child: Text("Counter"),
+                      ),
+                      Tab(
+                        child: Text("Blue"),
+                      ),
+                      Tab(
+                        child: Text("Colors 1"),
+                      ),
+                      Tab(
+                        child: Text("Colors 2"),
+                      ),
+                      Tab(
+                        child: Text("Counter"),
+                      ),
+                      Tab(
+                        child: Text("Blue"),
+                      ),
+                      Tab(
+                        child: Text("Colors 1"),
+                      ),
+                      Tab(
+                        child: Text("Colors 2"),
+                      ),
+                    ],
+                  ),
                 ),
-                Tab(
-                  child: Text("Blue"),
-                ),
-                Tab(
-                  child: Text("Colors 1"),
-                ),
-                Tab(
-                  child: Text("Colors 2"),
-                ),
+                Flexible(child: Icon(Icons.arrow_forward_ios)),
               ],
             ),
           ),
