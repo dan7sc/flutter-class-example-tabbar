@@ -22,7 +22,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: PageView(
         controller: _pageController,
-        physics: NeverScrollableScrollPhysics(),
         pageSnapping: false,
         children: [
           CounterPage(counter: _counter),
