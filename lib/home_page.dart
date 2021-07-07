@@ -76,11 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
           NavigatorButton(
             text: "4",
             onPressed: () {
-              _pageController.animateTo(
-                _pageController.position.maxScrollExtent,
-                duration: Duration(milliseconds: 400),
-                curve: Curves.easeIn,
-              );
+              _pageController.jumpToPage(4);
             },
           ),
         ],
@@ -152,6 +148,7 @@ class Page3 extends StatelessWidget {
     );
   }
 }
+
 class Page2 extends StatelessWidget {
   const Page2({
     Key? key,
