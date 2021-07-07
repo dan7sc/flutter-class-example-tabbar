@@ -63,78 +63,75 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Container(
-            height: 30.0,
-            width: 30.0,
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              shape: BoxShape.circle,
-            ),
-            child: InkWell(
-                child: Center(child: Text("1")),
-                onTap: () {
-                  _pageController.animateTo(
-                    _pageController.position.minScrollExtent,
-                    duration: Duration(milliseconds: 400),
-                    curve: Curves.easeIn,
-                  );
-                }),
+          NavigatorButton(
+            text: "1",
+            onPressed: () {
+              _pageController.animateTo(
+                _pageController.position.minScrollExtent,
+                duration: Duration(milliseconds: 400),
+                curve: Curves.easeIn,
+              );
+            },
           ),
-          Container(
-            height: 30.0,
-            width: 30.0,
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              shape: BoxShape.circle,
-            ),
-            child: InkWell(
-                child: Center(child: Text("2")),
-                onTap: () {
-                  _pageController.animateTo(
-                    _pageController.position.minScrollExtent +
-                        (MediaQuery.of(context).size.width),
-                    duration: Duration(milliseconds: 400),
-                    curve: Curves.easeIn,
-                  );
-                }),
+          NavigatorButton(
+            text: "2",
+            onPressed: () {
+              _pageController.animateTo(
+                _pageController.position.minScrollExtent +
+                  (MediaQuery.of(context).size.width),
+                duration: Duration(milliseconds: 400),
+                curve: Curves.easeIn,
+              );
+            },
           ),
-          Container(
-            height: 30.0,
-            width: 30.0,
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              shape: BoxShape.circle,
-            ),
-            child: InkWell(
-                child: Center(child: Text("3")),
-                onTap: () {
-                  _pageController.animateTo(
-                    _pageController.position.minScrollExtent +
-                        (MediaQuery.of(context).size.width * 2),
-                    duration: Duration(milliseconds: 400),
-                    curve: Curves.easeIn,
-                  );
-                }),
+          NavigatorButton(
+            text: "3",
+            onPressed: () {
+              _pageController.animateTo(
+                _pageController.position.minScrollExtent +
+                    (MediaQuery.of(context).size.width * 2),
+                duration: Duration(milliseconds: 400),
+                curve: Curves.easeIn,
+              );
+            },
           ),
-          Container(
-            height: 30.0,
-            width: 30.0,
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              shape: BoxShape.circle,
-            ),
-            child: InkWell(
-              child: Center(child: Text("4")),
-              onTap: () {
-                _pageController.animateTo(
-                  _pageController.position.maxScrollExtent,
-                  duration: Duration(milliseconds: 400),
-                  curve: Curves.easeIn,
-                );
-              }
-            ),
+          NavigatorButton(
+            text: "4",
+            onPressed: () {
+              _pageController.animateTo(
+                _pageController.position.maxScrollExtent,
+                duration: Duration(milliseconds: 400),
+                curve: Curves.easeIn,
+              );
+            },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class NavigatorButton extends StatelessWidget {
+  final String text;
+  final Function()? onPressed;
+  const NavigatorButton({
+    Key? key,
+    required this.text,
+    required this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 30.0,
+      width: 30.0,
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        shape: BoxShape.circle,
+      ),
+      child: InkWell(
+        child: Center(child: Text(text)),
+        onTap: onPressed,
       ),
     );
   }
