@@ -9,19 +9,6 @@ class CounterPage extends StatelessWidget {
 
   final int _counter;
 
-//   @override
-//   _CounterPageState createState() => _CounterPageState();
-// }
-
-// class _CounterPageState extends State<CounterPage> {
-//   int _counter = 0;
-
-//   void _incrementCounter() {
-//     setState(() {
-//       _counter++;
-//     });
-//   }
-
   @override
   Widget build(BuildContext context) {
       return Center(
