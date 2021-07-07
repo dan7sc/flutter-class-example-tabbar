@@ -32,6 +32,7 @@ class _MyHomePageState extends State<MyHomePage>
         ),
         body: TabBarView(
           controller: _tabController,
+          physics: NeverScrollableScrollPhysics(),
           children: [
             CounterPage(counter: _counter),
             Page2(),
@@ -63,32 +64,22 @@ class _MyHomePageState extends State<MyHomePage>
                     onTap: (index) {
                       setState(() {});
                     },
-                    tabs: [
-                      Tab(
-                        child: Text("Counter"),
+                    tabs: List.generate(
+                      _tabController!.length,
+                      (index) => Container(
+                        height: 40.0,
+                        width: 20.0,
+                        decoration: BoxDecoration(
+                          color: _tabController!.index == index
+                              ? Colors.green
+                              : Colors.blue,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Tab(
+                          child: Text(index.toString()),
+                        ),
                       ),
-                      Tab(
-                        child: Text("Blue"),
-                      ),
-                      Tab(
-                        child: Text("Colors 1"),
-                      ),
-                      Tab(
-                        child: Text("Colors 2"),
-                      ),
-                      Tab(
-                        child: Text("Counter"),
-                      ),
-                      Tab(
-                        child: Text("Blue"),
-                      ),
-                      Tab(
-                        child: Text("Colors 1"),
-                      ),
-                      Tab(
-                        child: Text("Colors 2"),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
                 Flexible(child: Icon(Icons.arrow_forward_ios)),
